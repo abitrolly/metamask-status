@@ -3,3 +3,5 @@ class MetamaskStatus extends HTMLElement {
     super();
   }
 }
+CustomElements.define('metamask-status', MetamaskStatus)
+
