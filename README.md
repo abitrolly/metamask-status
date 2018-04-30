@@ -2,7 +2,7 @@
 
 ---
 
-Shows colored fox head if Metamask is active, and gray head if it is not. See [demo.html](demo.html).
+Shows colored fox head if Metamask is active, and gray head if it is not. See [demo](https://abitrolly.github.io/metamask-status/demo.html) and [html source](demo.html).
 ```html
 <script src="metamask-status.js"></script>
 <metamask-status></metamask-status>
