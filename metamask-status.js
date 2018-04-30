@@ -5,4 +5,4 @@ class MetamaskStatus extends HTMLElement {
     super();
   }
 }
-window.CustomElements.define('metamask-status', MetamaskStatus)
+customElements.define('metamask-status', MetamaskStatus)
