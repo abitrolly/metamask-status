@@ -3,6 +3,9 @@
 ---
 
 Funded through https://gitcoin.co/tip?username=abitrolly&comments_public=for:metamask-status
+ * day 1 (abitrolly)
+ * day 2 (abitrolly)
+ * day 3 (abitrolly)
 
 ---
 
