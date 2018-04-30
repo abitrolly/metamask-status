@@ -1,7 +1,8 @@
+//uses browser.window
+
 class MetamaskStatus extends HTMLElement {
   constructor() {
     super();
   }
 }
-CustomElements.define('metamask-status', MetamaskStatus)
-
+window.CustomElements.define('metamask-status', MetamaskStatus)
