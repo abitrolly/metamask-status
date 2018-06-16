@@ -15,6 +15,7 @@ class MetamaskStatus extends HTMLElement {
             console.log('MetaMask is locked')
           } else {
             console.log('MetaMask is unlocked')
+          }
         } else {
           console.log('MetaMask is not available')
         }
