@@ -11,7 +11,10 @@ class MetamaskStatus extends HTMLElement {
       if (typeof web3 !== 'undefined') {
         console.log('web3 is enabled')
         if (web3.currentProvider.isMetaMask === true) {
-          console.log('MetaMask is active')
+          if (web3.eth.coinbase === null) {
+            console.log('MetaMask is locked')
+          } else {
+            console.log('MetaMask is unlocked')
         } else {
           console.log('MetaMask is not available')
         }
