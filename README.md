@@ -10,7 +10,9 @@ Shows colored fox head if Metamask is active, and gray head if it is not. See [d
 
 If MetaMask is present and unlocked, the element gains `enabled` and `unlocked` attributes.
 
-    <metamask-status enabled unlocked></metamask-status>
+```html
+<metamask-status enabled unlocked></metamask-status>
+```
 
 ---
 
