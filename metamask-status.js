@@ -6,22 +6,25 @@ class MetamaskStatus extends HTMLElement {
   }
   
   connectedCallback() {
+    // save reference to itself for event handlers
+    var _this = this;
+    
     // check web3 and MetaMask specifically
     window.addEventListener('load', function() {
       if (typeof web3 !== 'undefined') {
         console.log('web3 is enabled')
         if (web3.currentProvider.isMetaMask === true) {
-          this.setAttribute('enabled', '')
+          _this.setAttribute('enabled', '')
           if (web3.eth.coinbase === null) {
             console.log('MetaMask is locked')
-            this.removeAttribute('unlocked', '')
+            _this.removeAttribute('unlocked', '')
           } else {
             console.log('MetaMask is unlocked')
-            this.setAttribute('unlocked', '')
+            _this.setAttribute('unlocked', '')
           }
         } else {
           console.log('MetaMask is not available')
-          this.removeAttribute('enabled', '')
+          _this.removeAttribute('enabled', '')
         }
       } else {
         console.log('web3 is not found')
