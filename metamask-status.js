@@ -6,8 +6,11 @@ class MetamaskStatus extends HTMLElement {
 
     const shadowRoot = this.attachShadow({mode: 'open'});
     shadowRoot.innerHTML = `
-      <style></style>
+      <style>
+	#status { margin-left: 5px; text-transform: uppercase; font-family: monospace }
+      </style>
       <img src="metamask.svg" width="25">
+      <span id="status">no web3</span>
     `;
   }
 
