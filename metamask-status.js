@@ -4,8 +4,9 @@ class MetamaskStatus extends HTMLElement {
   constructor() {
     super();
 
-    const shadowRoot = this.attachShadow({mode: 'open'});
-    shadowRoot.innerHTML = `
+    // attachShadow fills this.shadowRoot automatically
+    this.attachShadow({mode: 'open'});
+    this.shadowRoot.innerHTML = `
       <style>
 	#status { margin-left: 5px; text-transform: uppercase; font-family: monospace }
       </style>
@@ -16,7 +17,8 @@ class MetamaskStatus extends HTMLElement {
 
   connectedCallback() {
     // save reference to itself for event handlers
-    var _this = this;
+    const _this = this;
+    const elstatus = this.shadowRoot.querySelector('#status')
 
     // check web3 and MetaMask specifically
     window.addEventListener('load', function() {
@@ -27,16 +29,20 @@ class MetamaskStatus extends HTMLElement {
           if (web3.eth.coinbase === null) {
             console.log('MetaMask is locked')
             _this.removeAttribute('unlocked', '')
+	    elstatus.innerHTML = 'locked'
           } else {
             console.log('MetaMask is unlocked')
             _this.setAttribute('unlocked', '')
+	    elstatus.innerHTML = 'unlocked'
           }
         } else {
           console.log('MetaMask is not available')
           _this.removeAttribute('enabled', '')
+	  elstatus.innerHTML = 'web3 w/o metamask'
         }
       } else {
         console.log('web3 is not found')
+	elstatus.innerHTML = 'no web3'
       }
     })
   }
