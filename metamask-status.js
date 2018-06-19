@@ -3,12 +3,18 @@
 class MetamaskStatus extends HTMLElement {
   constructor() {
     super();
+
+    const shadowRoot = this.attachShadow({mode: 'open'});
+    shadowRoot.innerHTML = `
+      <style></style>
+      <img src="metamask.svg" width="25">
+    `;
   }
-  
+
   connectedCallback() {
     // save reference to itself for event handlers
     var _this = this;
-    
+
     // check web3 and MetaMask specifically
     window.addEventListener('load', function() {
       if (typeof web3 !== 'undefined') {
