@@ -16,6 +16,20 @@ class MetamaskStatus extends HTMLElement {
     this.content = this.shadowRoot.querySelector('#status')
   }
 
+  // MetaMask is accessible and unlocked
+  set unlocked(check) {
+    if (check === true) {
+      this.setAttribute('unlocked', '')
+      this.content.innerHTML = 'unlocked'
+    } else {
+      this.removeAttribute('unlocked', '')
+      this.content.innerHTML = 'locked'
+    }
+  }
+
+  get unlocked() {
+    return this.hasAttribute('unlocked')
+  }
 
   connectedCallback() {
     // check Ethereum API and MetaMask specifically
@@ -23,18 +37,9 @@ class MetamaskStatus extends HTMLElement {
       if (typeof window.ethereum !== 'undefined') {
         console.log('web3 is enabled')
         if (window.ethereum.isMetaMask === true) {
-          this.setAttribute('enabled', '')
 	  window.ethereum._metamask.isUnlocked()
 	      .then(unlocked => {
-                if (unlocked !== true) {
-		  console.log('MetaMask is locked')
-                  this.removeAttribute('unlocked', '')
-                  this.content.innerHTML = 'locked'
-                } else {
-                  console.log('MetaMask is unlocked')
-                  this.setAttribute('unlocked', '')
-                  this.content.innerHTML = 'unlocked'
-                }
+                this.unlocked = unlocked
 	      })
         } else {
           console.log('MetaMask is not available')
