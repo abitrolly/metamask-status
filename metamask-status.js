@@ -13,11 +13,11 @@ class MetamaskStatus extends HTMLElement {
       <img src="metamask.svg" width="25">
       <span id="status">no web3</span>
     `;
+    this.content = this.shadowRoot.querySelector('#status')
   }
 
-  connectedCallback() {
-    const elstatus = this.shadowRoot.querySelector('#status')
 
+  connectedCallback() {
     // check Ethereum API and MetaMask specifically
     window.addEventListener('load', () => {
       if (typeof window.ethereum !== 'undefined') {
@@ -29,21 +29,21 @@ class MetamaskStatus extends HTMLElement {
                 if (unlocked !== true) {
 		  console.log('MetaMask is locked')
                   this.removeAttribute('unlocked', '')
-                  elstatus.innerHTML = 'locked'
+                  this.content.innerHTML = 'locked'
                 } else {
                   console.log('MetaMask is unlocked')
                   this.setAttribute('unlocked', '')
-                  elstatus.innerHTML = 'unlocked'
+                  this.content.innerHTML = 'unlocked'
                 }
 	      })
         } else {
           console.log('MetaMask is not available')
           this.removeAttribute('enabled', '')
-	  elstatus.innerHTML = 'web3 w/o metamask'
+	  this.content.innerHTML = 'web3 w/o metamask'
         }
       } else {
         console.log('web3 is not found')
-	elstatus.innerHTML = 'no web3'
+	this.content.innerHTML = 'no web3'
       }
     })
   }
